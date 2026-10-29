@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume Maker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Resume Maker</h1>
+    <div class="actions">
+      <button type="button" class="btn btn-ghost" id="clear-btn">Clear all</button>
+      <button type="button" class="btn btn-primary" id="print-btn">Save as PDF</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <form class="panel" id="resume-form" autocomplete="off">
+      <fieldset class="group">
+        <legend>About you</legend>
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" type="text" placeholder="e.g. Maria Santos">
+        </div>
+        <div class="field">
+          <label for="title">Job title you want</label>
+          <input id="title" type="text" placeholder="e.g. Junior Web Developer">
+        </div>
+        <div class="field">
+          <label for="summary">Short summary</label>
+          <textarea id="summary" rows="3" placeholder="Two or three sentences about your strengths and goals."></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>Contact</legend>
+        <div class="row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="name@example.com">
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" placeholder="0912 345 6789">
+          </div>
+        </div>
+        <div class="field">
+          <label for="address">Address</label>
+          <input id="address" type="text" placeholder="City, Province">
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>Education</legend>
+        <div class="entries" id="education-list"></div>
+        <button type="button" class="btn btn-outline" data-add="education">Add education</button>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>Work experience</legend>
+        <div class="entries" id="experience-list"></div>
+        <button type="button" class="btn btn-outline" data-add="experience">Add experience</button>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>Skills</legend>
+        <div class="field">
+          <label for="skills">Separate skills with commas</label>
+          <input id="skills" type="text" placeholder="HTML, CSS, Teamwork, Excel">
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>Accent color</legend>
+        <div class="swatches" id="swatches" role="radiogroup" aria-label="Accent color"></div>
+      </fieldset>
+    </form>
+
+    <section class="preview-wrap" aria-label="Resume preview">
+      <article class="resume" id="resume"></article>
+    </section>
+  </main>
+
+  <template id="education-tpl">
+    <div class="entry">
+      <div class="row">
+        <div class="field"><label>School</label><input data-key="school" type="text" placeholder="University or school"></div>
+        <div class="field"><label>Years</label><input data-key="years" type="text" placeholder="2022 – 2026"></div>
+      </div>
+      <div class="field"><label>Course or level</label><input data-key="degree" type="text" placeholder="BS Information Technology"></div>
+      <button type="button" class="btn btn-link" data-remove>Remove</button>
+    </div>
+  </template>
+
+  <template id="experience-tpl">
+    <div class="entry">
+      <div class="row">
+        <div class="field"><label>Role</label><input data-key="role" type="text" placeholder="Intern"></div>
+        <div class="field"><label>Years</label><input data-key="years" type="text" placeholder="2025"></div>
+      </div>
+      <div class="field"><label>Company</label><input data-key="company" type="text" placeholder="Company name"></div>
+      <div class="field"><label>What you did</label><textarea data-key="details" rows="2" placeholder="One or two achievements."></textarea></div>
+      <button type="button" class="btn btn-link" data-remove>Remove</button>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
